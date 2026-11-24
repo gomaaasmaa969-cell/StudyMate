@@ -52,7 +52,7 @@ body {
     border: 2px solid #FFFFFF;
 }
 
-.logo { display: flex; align-items: center; gap: 10px; font-size: 1.45rem; color: var(--dark-navy); }
+.logo { display: flex; align-items: center; gap: 10px; font-size: 1.45rem; color: var(--dark-navy); cursor: pointer; }
 .logo-icon {
     background: linear-gradient(135deg, #1D63DC, #3B82F6);
     color: white; width: 42px; height: 42px; border-radius: 14px;
@@ -113,12 +113,13 @@ body {
 .feature-card {
     background: var(--card-bg); padding: 25px 18px; border-radius: 28px;
     text-align: center; box-shadow: 0 10px 25px rgba(29, 99, 220, 0.07);
-    border: 2px solid #FFFFFF; transition: transform 0.3s;
+    border: 2px solid #FFFFFF; transition: transform 0.3s; cursor: pointer;
 }
 .feature-card:hover { transform: translateY(-6px); }
 .icon-box {
     width: 65px; height: 65px; border-radius: 20px;
     display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;
+    font-size: 1.8rem;
 }
 .card-blue .icon-box { background: #DBEAFE; color: #1D4ED8; }
 .card-green .icon-box { background: #D1FAE5; color: #047857; }
@@ -138,9 +139,7 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-/* ==========================================
-   تنسيق شاشات اختيار النظام والمسار (Wizard)
-   ========================================== */
+/* تنسيق شاشات اختيار النظام والمسار والصفحات */
 .wizard-container {
     max-width: 900px;
     margin: 0 auto;
@@ -190,10 +189,10 @@ body {
     font-weight: 600;
 }
 
-/* شبكة الأنظمة */
+/* شبكة الأنظمة والمواد */
 .systems-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
 }
 
@@ -205,6 +204,7 @@ body {
     border: 2px solid #E2E8F0;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
     transition: 0.3s;
+    cursor: pointer;
 }
 .system-card:hover {
     border-color: var(--primary-blue);
@@ -297,49 +297,30 @@ body {
     justify-content: center;
 }
 
-.track-card h4 {
-    font-size: 1.15rem;
-    font-weight: 800;
-}
-
-/* لوحة اختيار مادة التخصص */
+/* لوحة اختيار التخصص */
 .specialization-panel {
-    background: #FFFBEB;
-    border: 2px dashed #F59E0B;
+    background: #F8FAFC;
+    border: 2px dashed var(--primary-blue);
     border-radius: 24px;
     padding: 22px;
     text-align: center;
     margin-bottom: 25px;
-    animation: fadeIn 0.3s ease;
-}
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-.specialization-panel h3 {
-    font-size: 1.25rem;
-    color: #B45309;
-    margin-bottom: 4px;
-}
-.specialization-panel p {
-    font-size: 0.9rem;
-    color: var(--text-gray);
-    margin-bottom: 15px;
 }
 
 .spec-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    max-width: 550px;
-    margin: 0 auto;
+    margin-top: 15px;
 }
 
 .spec-card {
     background: #FFFFFF;
-    border: 2px solid #FDE68A;
-    padding: 15px;
+    border: 2px solid #CBD5E1;
     border-radius: 18px;
-    font-weight: 800;
+    padding: 15px;
     font-size: 1.1rem;
+    font-weight: 800;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -347,28 +328,18 @@ body {
     gap: 10px;
     transition: 0.2s;
 }
-.spec-card:hover {
-    border-color: #F59E0B;
-}
 .spec-card.selected {
-    background: #F59E0B;
+    background: var(--primary-blue);
     color: white;
-    border-color: #D97706;
+    border-color: var(--primary-blue);
 }
 
 .wizard-footer {
     text-align: center;
-    margin-top: 15px;
 }
 
-/* التجاوب مع التابلت والموبايل */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+    .hero { flex-direction: column; text-align: center; }
     .features { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 650px) {
-    .hero { flex-direction: column-reverse; text-align: center; }
-    .nav-links { display: none; }
-    .hero-content h1 { font-size: 2.1rem; }
-    .features, .systems-grid, .tracks-grid, .spec-grid { grid-template-columns: 1fr; }
+    .tracks-grid, .spec-grid { grid-template-columns: 1fr; }
 }
