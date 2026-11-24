@@ -1,0 +1,296 @@
+:root {
+    --primary-blue: #1D63DC;
+    --dark-navy: #1E3A5F;
+    --soft-bg: #EEF5FF;
+    --card-bg: #FFFFFF;
+    --accent-gold: #F59E0B;
+    --text-gray: #475569;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: linear-gradient(180deg, #E0EEFF 0%, #F4F9FF 50%, #E6F0FF 100%);
+    color: var(--dark-navy);
+    line-height: 1.6;
+    padding: 18px;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* دوائر ديكورية ناعمة في الخلفية */
+.bg-decoration {
+    position: fixed;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(40px);
+}
+.circle-1 {
+    width: 300px;
+    height: 300px;
+    background: rgba(59, 130, 246, 0.15);
+    top: -80px;
+    right: -80px;
+}
+.circle-2 {
+    width: 280px;
+    height: 280px;
+    background: rgba(245, 158, 11, 0.12);
+    bottom: 50px;
+    left: -80px;
+}
+
+/* 1. الشريط العلوي */
+.navbar {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    max-width: 1100px;
+    margin: 0 auto 25px;
+    padding: 12px 25px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 25px rgba(29, 99, 220, 0.08);
+    border: 2px solid #FFFFFF;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.45rem;
+    color: var(--dark-navy);
+}
+
+.logo-icon {
+    background: linear-gradient(135deg, #1D63DC, #3B82F6);
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(29, 99, 220, 0.25);
+}
+
+.logo strong {
+    color: var(--primary-blue);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 12px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-weight: 700;
+    padding: 7px 18px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.nav-links a.active, .nav-links a:hover {
+    background: linear-gradient(135deg, #1D63DC, #3B82F6);
+    color: white;
+    box-shadow: 0 4px 12px rgba(29, 99, 220, 0.25);
+}
+
+/* 2. القسم الترحيبي */
+.hero {
+    max-width: 1100px;
+    margin: 0 auto 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 20px;
+}
+
+.hero-content {
+    flex: 1.1;
+}
+
+.welcome-tag {
+    display: inline-block;
+    background: #FEF3C7;
+    color: #B45309;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    border: 1px solid #FDE68A;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.brand-highlight {
+    color: var(--primary-blue);
+    position: relative;
+    display: inline-block;
+}
+
+.brand-highlight::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: var(--accent-gold);
+    border-radius: 10px;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    color: var(--text-gray);
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #1D63DC, #2563EB);
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.15rem;
+    font-weight: 800;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 25px rgba(29, 99, 220, 0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(29, 99, 220, 0.45);
+}
+
+/* حركة طفو ناعمة للرسمة */
+.hero-visual {
+    flex: 0.9;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-illustration {
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 15px 25px rgba(29, 99, 220, 0.15));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* 3. بطاقات المميزات الملونة */
+.features {
+    max-width: 1100px;
+    margin: 0 auto 35px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    padding: 25px 18px;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(29, 99, 220, 0.07);
+    border: 2px solid #FFFFFF;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+}
+
+.icon-box {
+    width: 65px;
+    height: 65px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+/* ألوان مبهجة لكل بطاقة */
+.card-blue .icon-box { background: #DBEAFE; color: #1D4ED8; }
+.card-green .icon-box { background: #D1FAE5; color: #047857; }
+.card-orange .icon-box { background: #FEF3C7; color: #B45309; }
+.card-purple .icon-box { background: #EDE9FE; color: #6D28D9; }
+
+.feature-card h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    font-weight: 600;
+}
+
+/* 4. الشريط التحفيزي السفلي */
+.motivation-banner {
+    background: linear-gradient(135deg, #1E3A8A, #1D63DC);
+    color: white;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px 30px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    box-shadow: 0 10px 25px rgba(29, 99, 220, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* التجاوب مع التابلت */
+@media (max-width: 900px) {
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* التجاوب مع الموبايل */
+@media (max-width: 650px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .nav-links {
+        display: none;
+    }
+    .hero-content h1 {
+        font-size: 2.1rem;
+    }
+    .features {
+        grid-template-columns: 1fr;
+    }
+}
