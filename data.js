@@ -79,39 +79,3 @@ const STUDY_DATA = {
                 color: "#10B981",
                 icon: "🩺",
                 subjects: [
-                    { id: "ar", name: "اللغة العربية", icon: "📖" },
-                    { id: "en", name: "اللغة الأجنبية الأولى", icon: "🌍" },
-                    { id: "phys", name: "الفيزياء", icon: "⚡" },
-                    { id: "chem", name: "الكيمياء", icon: "🧪" },
-                    { id: "bio", name: "الأحياء", icon: "🧬" }
-                ]
-            },
-            {
-                id: "sci_math",
-                name: "علمي رياضة",
-                color: "#1D63DC",
-                icon: "📐",
-                subjects: [
-                    { id: "ar", name: "اللغة العربية", icon: "📖" },
-                    { id: "en", name: "اللغة الأجنبية الأولى", icon: "🌍" },
-                    { id: "phys", name: "الفيزياء", icon: "⚡" },
-                    { id: "chem", name: "الكيمياء", icon: "🧪" },
-                    { id: "math", name: "الرياضيات", icon: "📏" }
-                ]
-            },
-            {
-                id: "literary",
-                name: "الشعبة الأدبية",
-                color: "#8B5CF6",
-                icon: "📚",
-                subjects: [
-                    { id: "ar", name: "اللغة العربية", icon: "📖" },
-                    { id: "en", name: "اللغة الأجنبية الأولى", icon: "🌍" },
-                    { id: "hist", name: "التاريخ", icon: "🏛️" },
-                    { id: "geo", name: "الجغرافيا", icon: "🗺️" },
-                    { id: "stat", name: "الإحصاء", icon: "📈" }
-                ]
-            }
-        ]
-    }
-};
