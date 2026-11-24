@@ -1,4 +1,75 @@
-            sCard.onclick = function() {
+var userSelection = { gradeKey: null, trackId: null, specializationId: null };
+var activeSubjectId = null;
+var timerSeconds = 25 * 60;
+var timerInterval = null;
+
+function showStep(stepId) {
+    var sections = document.querySelectorAll('.view-section');
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].classList.add('hidden');
+    }
+    var target = document.getElementById(stepId);
+    if (target) target.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openPage(pageId) {
+    if (pageId === 'step-subjects') openSubjectsPage();
+    else if (pageId === 'step-tasks') openTasksPage();
+    else if (pageId === 'step-timer') openTimerPage();
+    else if (pageId === 'step-progress') openProgressPage();
+}
+
+function selectGrade(gradeKey) {
+    userSelection.gradeKey = gradeKey;
+    userSelection.trackId = null;
+    userSelection.specializationId = null;
+
+    var gradeData = STUDY_DATA[gradeKey];
+    if (!gradeData.needsTrack) {
+        finishSetup();
+        return;
+    }
+
+    document.getElementById('track-step-title').textContent = gradeData.trackLabel;
+    document.getElementById('selected-grade-subtitle').textContent = gradeData.title;
+    document.getElementById('specialization-box').classList.add('hidden');
+    document.getElementById('confirm-setup-btn').classList.add('hidden');
+
+    var container = document.getElementById('tracks-container');
+    container.innerHTML = '';
+
+    gradeData.tracks.forEach(function(track) {
+        var card = document.createElement('div');
+        card.className = 'track-card';
+        card.innerHTML = '<div class="track-emoji" style="color:' + track.color + '">' + track.icon + '</div><h4>' + track.name + '</h4>';
+        card.onclick = function() { selectTrack(track, card); };
+        container.appendChild(card);
+    });
+
+    showStep('step-track');
+}
+
+function selectTrack(track, cardEl) {
+    userSelection.trackId = track.id;
+    userSelection.specializationId = null;
+
+    document.querySelectorAll('.track-card').forEach(function(c) { c.classList.remove('selected'); });
+    cardEl.classList.add('selected');
+
+    var specBox = document.getElementById('specialization-box');
+    var btn = document.getElementById('confirm-setup-btn');
+
+    if (track.specializations) {
+        btn.classList.add('hidden');
+        specBox.classList.remove('hidden');
+        var specCont = document.getElementById('specializations-container');
+        specCont.innerHTML = '';
+
+        track.specializations.forEach(function(spec) {
+            var sCard = document.createElement('div');
+            sCard.className = 'spec-card';
+            sCard.innerHTML = '<span>' + spec.icon + '</span> <span>' + spec.name + '</s            sCard.onclick = function() {
                 userSelection.specializationId = spec.id;
                 document.querySelectorAll('.spec-card').forEach(function(x) { x.classList.remove('selected'); });
                 sCard.classList.add('selected');
